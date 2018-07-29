@@ -18,4 +18,8 @@ class InvalidException extends \Exception
     {
         return $this->invalid_msgs;
     }
+    public function pushInvalidMsg($id, $msg)
+    {
+        $this->invalid_msgs[$id] = $msg;
+    }
 }
