@@ -19,7 +19,7 @@
         }
     },
     "require": {
-        "cloud/collection": "^1.0"
+        "cloud/collection": "^2.0"
     },
     "config": {
     },
