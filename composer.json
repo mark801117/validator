@@ -19,7 +19,7 @@
         }
     },
     "require": {
-        "cloud/collection":">=2.0-stable"
+        "cloud/collection": "^1.0"
     },
     "config": {
     },
