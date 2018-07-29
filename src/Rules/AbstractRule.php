@@ -14,7 +14,6 @@ abstract class AbstractRule
     public function __construct($name)
     {
         $this->name = $name;
-        print("use {$name}\n");
     }
     
     /**
