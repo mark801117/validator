@@ -90,7 +90,7 @@ class Validator
     private function getValidation($rule_name)
     {
         if (!$this->rule_collection->exist($rule_name)) {
-            $class = 'Cloud\\Validator\\Rules\\'.$rule_name;
+            $class = 'Cloud\\Validator\\Rules\\'.ucfirst($rule_name);
             $v = new $class();
             $this->rule_collection->push($rule_name, $v);
         }
