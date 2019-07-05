@@ -30,5 +30,5 @@ abstract class AbstractRule
     /**
      * 驗證方法
      */
-    abstract public function valid($val, array $args);
+    abstract public function valid($val, $args);
 }
