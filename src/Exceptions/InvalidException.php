@@ -22,4 +22,22 @@ class InvalidException extends \Exception
     {
         $this->invalid_msgs[$id] = $msg;
     }
+    /**
+     * 驗證失敗訊息(字串)
+     * @param type $split
+     * @return string
+     */
+    public function getInvalidDataString($split = "\n") 
+    {
+        $str = '';
+        foreach ($this->invalid_msgs as $id => $msgs)
+        {
+            foreach ($msgs as $msg)
+            {
+                $str .= "{$msg}{$split}";
+            }
+        }
+        $str = rtrim($str, $split);
+        return $str;
+    }
 }
