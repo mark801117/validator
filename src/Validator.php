@@ -59,7 +59,7 @@ class Validator
      * @param string $name 欄位名稱
      * @param mixed $val 欄位值
      * @param bool $required 是否為必填
-     * @return \Byallen\Validator\ValidField 回傳驗證區
+     * @return ValidField 回傳驗證區
      */
     public function rule($id, $name, $val, $required = false)
     {
