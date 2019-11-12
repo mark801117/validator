@@ -1,6 +1,8 @@
 <?php
 namespace Cloud\Validator;
 
+use Cloud\Validator\Exceptions\RuleException;
+
 /**
  * Description of ValidRules
  *
@@ -42,9 +44,8 @@ class ValidField
     
     /**
      * 呼叫提供的驗證方法
-     * @param type $name
-     * @param type $arguments
-     * @throws e\ComponentException
+     * @param string $name
+     * @param [type] $arguments
      */
     public function __call($name, $arguments) 
     {
@@ -61,7 +62,7 @@ class ValidField
      * 自行設定驗證的錯誤訊息
      * @param string $rule_name Equal to ValidField method example: length, isInt
      * @param string $message The message about invalid.
-     * @throws e\ComponentException
+     * @throws RuleException
      */
     public function setRuleMessage($rule_name, $message)
     {
@@ -96,25 +97,25 @@ class ValidField
     
     /**
      * rule can't be duplicated
-     * @param type $rule_name
-     * @throws e\ComponentException
+     * @param string $rule_name
+     * @throws RuleException
      */
     private function ruleUsed($rule_name)
     {
         if (isset($this->rules[$rule_name])) {
-            throw new e\ComponentException(sprintf("Rule \"%s\" was seted", $rule_name));
+            throw new RuleException(sprintf("Rule \"%s\" was seted", $rule_name));
         }
     }
     
     /**
      * rule must be used before this step
-     * @param type $rule_name
-     * @throws e\ComponentException
+     * @param string $rule_name
+     * @throws RuleException
      */
     private function ruleExist($rule_name)
     {
         if (!isset($this->rules[$rule_name])) {
-            throw new e\ComponentException(sprintf("Rule \"%s\" was not found", $rule_name));
+            throw new RuleException(sprintf("Rule \"%s\" was not found", $rule_name));
         }
     }
 }
