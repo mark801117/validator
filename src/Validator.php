@@ -41,8 +41,12 @@ class Validator
                 $args = $rule['args'];
                 $v = $this->getValidation($rule_name);
                 if (!$v->valid($value, $args)) {
-                    $invalid[$vf->getId()][$rule_name] = $this->getInvalidMsgs($rule_name, $column_name, $args);
                     $result = false;
+                    if (isset($vf->getRules()[$rule_name]['message'])) {
+                        $invalid[$vf->getId()][$rule_name] = $vf->getRules()[$rule_name]['message'];
+                        continue;
+                    }
+                    $invalid[$vf->getId()][$rule_name] = $this->getInvalidMsgs($rule_name, $column_name, $args);
                 }
             }
         }
@@ -76,10 +80,10 @@ class Validator
     
     /**
      * 取得規則對應的invalid message
-     * @param type $rule_name 規則
-     * @param type $column_name 驗證欄位名稱
-     * @param type $args 驗證參數值
-     * @return type
+     * @param string $rule_name 規則
+     * @param string $column_name 驗證欄位名稱
+     * @param array $args 驗證參數值
+     * @return void
      */
     private function getInvalidMsgs($rule_name, $column_name, array $args)
     {
