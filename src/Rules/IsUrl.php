@@ -2,11 +2,11 @@
 namespace Cloud\Validator\Rules;
 
 /**
- * Description of isUrl
+ * Description of IsUrl
  *
  * @author cloud
  */
-class isUrl extends AbstractRule
+class IsUrl extends AbstractRule
 {
     public function __construct() 
     {
